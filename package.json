@@ -1,0 +1,52 @@
+{
+  "name": "deetya-bakes",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node scripts/migrate.mjs",
+    "invite": "node scripts/invite.mjs",
+    "storage:cors": "node scripts/storage-cors.mjs",
+    "backup:media": "node scripts/backup-media.mjs",
+    "restore": "node scripts/restore.mjs",
+    "test:unit": "tsx --test tests/unit.test.ts",
+    "test:e2e": "node tests/e2e.mjs",
+    "vercel-build": "node scripts/migrate.mjs && next build"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1146.0",
+    "@aws-sdk/s3-request-presigner": "^3.1146.0",
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource-variable/fraunces": "^5.3.0",
+    "@fontsource/caveat": "^5.3.0",
+    "heic-convert": "^2.1.0",
+    "next": "16.3.8",
+    "pg": "^8.23.1",
+    "qrcode": "^1.5.4",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "server-only": "^0.0.1",
+    "sharp": "^0.35.5",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@neon/config": "^1.8.4",
+    "@neon/env": "^1.5.1",
+    "@types/node": "^20",
+    "@types/pg": "^8.23.1",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.8",
+    "tsx": "^4.23.15",
+    "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}
