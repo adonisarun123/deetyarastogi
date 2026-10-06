@@ -12,7 +12,7 @@ export const BIRTHDAY = {
   time: "12 noon onwards",
   venue: "Paws Pannai Retreat",
   address: "Near Shoolagiri, Tamil Nadu",
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Paws+Pannai+Retreat+Shoolagiri", // replace with the exact pin if you have one
+  mapsUrl: "https://maps.google.com/?cid=10278887574214274125",
   dressCode: "", // optional
   rsvpBy: "Thursday, 8 October",
   whatsapp: "919717334639", // international format, digits only
