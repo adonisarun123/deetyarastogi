@@ -9,13 +9,13 @@ export function proxy(req: NextRequest) {
     return NextResponse.redirect(new URL("/dashboard/login", req.url));
   }
   const res = NextResponse.next();
-  if (pathname.startsWith("/dashboard") || pathname.startsWith("/preview") || pathname.startsWith("/invite")) {
+  if (pathname.startsWith("/dashboard") || pathname.startsWith("/preview") || pathname.startsWith("/invite") || pathname.startsWith("/sweet16")) {
     res.headers.set("X-Robots-Tag", "noindex, nofollow");
-    res.headers.set("Cache-Control", "private, no-store");
+    if (!pathname.startsWith("/sweet16")) res.headers.set("Cache-Control", "private, no-store");
   }
   return res;
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/preview/:path*", "/invite/:path*"],
+  matcher: ["/dashboard/:path*", "/preview/:path*", "/invite/:path*", "/sweet16/:path*"],
 };

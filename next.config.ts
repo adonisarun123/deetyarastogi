@@ -24,6 +24,8 @@ const csp = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   serverExternalPackages: ["sharp", "heic-convert", "libheif-js"],
+  // The birthday invite photo is read from disk by its route; ship it with that function.
+  outputFileTracingIncludes: { "/sweet16/[code]/photo": ["./assets/celebrate/**"] },
   async headers() {
     return [
       {
