@@ -4,31 +4,28 @@ import { BIRTHDAY, birthdayActive } from "@/lib/birthday";
 import { BirthdayRsvp } from "@/components/BirthdayRsvp";
 import { HeartIcon } from "@/components/Icons";
 
-type P = Promise<{ code: string }>;
-
 const isPlaceholder = (s: string) => /^\[.*\]$/.test(s.trim());
 
-export async function generateMetadata({ params }: { params: P }): Promise<Metadata> {
-  const { code } = await params;
-  if (!birthdayActive(code)) return { title: "Not found", robots: { index: false, follow: false } };
+export async function generateMetadata(): Promise<Metadata> {
+  if (!birthdayActive()) return { title: "Not found", robots: { index: false, follow: false } };
   return {
     title: `You’re invited: ${BIRTHDAY.name} turns 16`,
     description: `${BIRTHDAY.dateLabel}. Tap to see the details and RSVP.`,
-    // Link-only page: never indexed, never in the sitemap.
+    alternates: { canonical: "/sweet16" },
+    // Never indexed, never in the sitemap.
     robots: { index: false, follow: false, nocache: true, googleBot: { index: false, follow: false, noimageindex: true } },
     openGraph: {
       title: `You’re invited: ${BIRTHDAY.name} turns 16 ♡`,
       description: `${BIRTHDAY.dateLabel} · RSVP inside`,
-      images: [{ url: `/sweet16/${BIRTHDAY.code}/photo`, width: 900, height: 1600, alt: `${BIRTHDAY.name} in a Birthday Girl sash` }],
+      images: [{ url: "/sweet16/photo", width: 900, height: 1600, alt: `${BIRTHDAY.name} in a Birthday Girl sash` }],
     },
   };
 }
 
-export default async function Sweet16({ params }: { params: P }) {
-  const { code } = await params;
-  if (!birthdayActive(code)) notFound();
+export default async function Sweet16() {
+  if (!birthdayActive()) notFound();
   const b = BIRTHDAY;
-  const photo = `/sweet16/${b.code}/photo`;
+  const photo = "/sweet16/photo";
 
   return (
     <>

@@ -1,10 +1,9 @@
-// Deetya's 16th birthday invite — a private, link-only page.
-// Not in navigation, search, the sitemap or search engines (noindex), and it switches itself
-// off after `expiresAt`. The PRD keeps exact birthdays and routine locations off the public site,
-// so share this link only with guests. To rotate the link, set BIRTHDAY_CODE in the environment.
+// Deetya's 16th birthday invite at /sweet16.
+// Not in navigation, the sitemap or search engines (noindex), and it switches itself off after
+// `expiresAt`. NOTE: /sweet16 is a guessable address — anyone who types it sees the photo, date and
+// venue until it expires. The PRD keeps exact birthdays and routine locations off the public site.
 
 export const BIRTHDAY = {
-  code: (process.env.BIRTHDAY_CODE || "hrceqyqf").toLowerCase(),
   expiresAt: "2026-10-12T00:00:00+05:30",
   name: "Deetya",
   dateLabel: "Saturday, 10 October 2026",
@@ -19,10 +18,8 @@ export const BIRTHDAY = {
   phoneDisplay: "+91 97173 34639",
 };
 
-export function birthdayActive(code: string) {
-  return code.toLowerCase() === BIRTHDAY.code && Date.now() < new Date(BIRTHDAY.expiresAt).getTime();
+export function birthdayActive() {
+  return Date.now() < new Date(BIRTHDAY.expiresAt).getTime();
 }
 
-export function invitePath() {
-  return `/sweet16/${BIRTHDAY.code}`;
-}
+export const INVITE_PATH = "/sweet16";
