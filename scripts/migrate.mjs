@@ -17,7 +17,7 @@ for (const f of [".env.local", ".env"]) {
 
 const url = process.env.DATABASE_URL_UNPOOLED || process.env.DATABASE_URL;
 if (!url) {
-  console.error("DATABASE_URL is not set");
+  console.error("DATABASE_URL is not set. Locally: run `neon deploy` (writes .env.local). On Vercel: add DATABASE_URL in Project → Settings → Environment Variables for this environment.");
   process.exit(1);
 }
 
