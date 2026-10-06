@@ -23,6 +23,10 @@ A personal publishing site for a young baker, plus a private studio where she pu
 
 ## First-time setup (Neon)
 
+> Status: steps 1–5 below were run on 6 Oct 2026. Project `polished-cloud-92667396`, branch `production`, schema migrated, bucket `media` (private) provisioned, CORS set for localhost, and a real upload (HEIC → WebP) tested end to end. **Remaining:** create the owner invite and deploy the app.
+>
+> If your shell exports `NODE_ENV=production`, install with `npm ci --include=dev`. Otherwise the config and type packages are skipped.
+
 ```bash
 npm install
 npm i -g neon@latest && neon login          # opens a browser to approve
